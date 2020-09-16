@@ -72,7 +72,7 @@ plt.savefig("logistic_regression.png")
 #######################################################
 ##########     Random Forest classifier      ##########
 #######################################################
-clf = RandomForestClassifier(n_estimators=10, class_weight='balanced')
+clf = RandomForestClassifier(n_estimators=20, class_weight='balanced')
 clf.fit(X_train, y_train)
 y_pred = clf.predict(X_test)
 fp.write("##"*50)
