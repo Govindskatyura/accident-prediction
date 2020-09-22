@@ -12,8 +12,8 @@ import seaborn as sns
 from  sklearn.ensemble import RandomForestClassifier
 sns.set(style="whitegrid", font_scale=1.5)
 
-train_df = pd.read_csv("Train_data.csv")
-test_df = pd.read_csv("Test_Data.csv")
+train_df = pd.read_csv("data/Train_data.csv")
+test_df = pd.read_csv("data/Test_Data.csv")
 train_df.drop("Unnamed: 0",axis=1,inplace=True)
 test_df.drop("Unnamed: 0",axis=1,inplace=True)
 train_df.drop("gender",axis=1,inplace= True)
@@ -55,7 +55,7 @@ lg2.fit(X_train,y_train)
 # test
 y_pred = lg2.predict(X_test)
 # performance
-fp = open("log.txt","w")
+fp = open("output/log.txt","w")
 fp.write(f'Accuracy Score: {accuracy_score(y_test,y_pred)} \n')
 fp.write(f'Confusion Matrix: \n{confusion_matrix(y_test, y_pred)} \n')
 fp.write(f'Area Under Curve: {roc_auc_score(y_test, y_pred)} \n')
@@ -67,7 +67,7 @@ plt.title("Feature Importance")
 plt.xlabel("features")
 plt.ylabel("importance to predict  classes 0 or 1")
 plt.bar([x for x in range(len(importance))], importance)
-plt.savefig("logistic_regression.png")
+plt.savefig("output/logistic_regression.png")
 
 #######################################################
 ##########     Random Forest classifier      ##########
@@ -86,4 +86,4 @@ plt.title("Feature Importance")
 plt.xlabel("features")
 plt.ylabel("importance to predict  classes 0 or 1")
 plt.bar([x for x in range(len(importance))], importance)
-plt.savefig("Random_Forest_classifier.png")
+plt.savefig("output/Random_Forest_classifier.png")
