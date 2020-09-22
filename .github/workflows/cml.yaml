@@ -11,8 +11,9 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
         run: |
           pip install -r requirements.txt
+          mkdir output
           python train.py
-          cat log.txt >> report.md
-          cml-publish logistic_regression.png --md >> report.md
-          cml-publish Random_Forest_classifier.png --md >> report.md
+          cat output/log.txt >> report.md
+          cml-publish output/logistic_regression.png --md >> report.md
+          cml-publish output/Random_Forest_classifier.png --md >> report.md
           cml-send-comment report.md
